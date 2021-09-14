@@ -26,6 +26,7 @@ const slice = createSlice({
         },
         wordAdded: (words, action) => {
             words.list.push(action.payload)
+            words.searchItems.push(action.payload)
         },
         wordsSearch: (words, action) => {
             words.searchItems = words.list.filter(word => word.key.includes(action.payload.toLowerCase().trim()))

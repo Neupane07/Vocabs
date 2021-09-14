@@ -78,6 +78,7 @@ const WordsList = () => {
     e.preventDefault();
     if (!searchText) return;
     setLoading(true);
+
     const { data } = await axios.post(
       "https://vocabs-dictionary.herokuapp.com/verifyword",
       {
@@ -142,26 +143,27 @@ const WordsList = () => {
         <Fade in={open}>
           <div className={classes.paper}>
             <ClearIcon
-              style={{ border: "", marginLeft: "98%" }}
+              style={{ marginLeft: "98%", marginTop: "4%" }}
               onClick={() => setOpen(false)}
             />
             <h1 id="transition-modal-title">
               {dictionary && dictionary[currentWord]?.key}
             </h1>
-            <p id="transition-modal-description">
+            <p id="transition-modal-description" style={{ color: "#4c4545" }}>
               {dictionary && dictionary[currentWord]?.category}
             </p>
-            <p>{dictionary && dictionary[currentWord]?.etymology}</p>
+            <p style={{ color: "#4c4545" }}>
+              {dictionary && dictionary[currentWord]?.etymology}
+            </p>
             {dictionary && dictionary[currentWord]?.definition}
             <p>
-              {dictionary[currentWord]?.subExample && (
+              {dictionary[currentWord]?.example && (
                 <li>{dictionary[currentWord]?.example}</li>
               )}
             </p>
             <p>
-              {dictionary[currentWord]?.subExample && (
-                <li>{dictionary[currentWord]?.shortDef}</li>
-              )}
+              {dictionary[currentWord]?.shortDef &&
+                dictionary[currentWord]?.shortDef}
             </p>
             <p>
               {dictionary[currentWord]?.subExample && (
